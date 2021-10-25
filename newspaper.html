@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWSPAPERS</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // heading , date , id , name
+
+    function Newspaper(n){
+        this.headline = "Finally Students Entered Into UNIT-3"
+        this.date = new Date().getDate()
+        this.id = Math.random()*10
+        this.name = n
+    }
+    // let n1 = new Newspaper("Indian")
+    // console.log(n1);
+     var i=0;
+     while(i<10){
+        let n1 = new Newspaper("INDIAN")
+        console.log(n1);
+        i++;
+     }
+
+     let str = new String("hari")
+      console.log(str);
+      console.log(str.toString());
+      let name = "vani"
+      console.log(name);
+   // ======>gives an empty object this is known as constructor function
+</script>

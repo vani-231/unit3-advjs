@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <input type="text" id="inp"> 
+   <button id="sub">SUBMIT</button>
+</body>
+</html>
+<script>
+    let submit = document.getElementById("sub")
+    submit.addEventListener("click",display)
+    function task(n){
+        this.name = "Name :- " + n
+        this.date = "Created Date :- "+ new Date().getDate()
+        this.status = "Status" + "false"
+    }
+    function display(){
+    let na = document.getElementById("inp").value
+    var names = new task(na)
+      let ul = document.createElement("ul")
+      let li1 = document.createElement("li")
+      let li2 = document.createElement("li")
+      let li3 = document.createElement("li")
+      li1.append(names.name)
+      li2.append(names.date)
+      li3.append(names.status)
+      ul.append(li1,li2,li3)
+      document.body.appendChild(ul)
+
+      //console.log(ul);
+    }
+
+</script>

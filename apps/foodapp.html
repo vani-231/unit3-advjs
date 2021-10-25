@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <button onclick="orderfood()">ORDER FOOD</button>
+        <legend>Choose your interests</legend>
+        <div>
+          <input type="checkbox" id="mcchicken" name="interest" value="Mcchicken meal" checked>
+          <label for="Mcchicken meal">Mcchicken meal</label>
+        </div>
+        <div>
+          <input type="checkbox" id="Mcveggie meal" name="interest" value="Mcveggie meal">
+          <label for="Mcveggie meal">Mcveggie meal</label>
+        </div>
+        <div>
+            <input type="checkbox" id="Hotcakes" name="interest" value="Hotcakes">
+            <label for="Hotcakes">Hotcakes</label>
+          </div>
+          <div>
+            <input type="checkbox" id="Mcwings" name="interest" value="Mcwings">
+            <label for="Mcwings">Mcwings</label>
+          </div>
+          <div>
+            <input type="checkbox" id="Chicken strips" name="interest" value="Chicken strips">
+            <label for="Chicken strips">Chicken strips</label>
+          </div>
+      </fieldset>
+</body>
+</html>
+
+<script>
+  let food = []
+    function orderfood(){
+      let val = document.getElementById("mcchicken")
+      let val1 = document.getElementById("Mcveggie meal")
+      let val2 = document.getElementById("Hotcakes")
+      let val3 = document.getElementById("Mcwings")
+      let val4 = document.getElementById("Chicken strips")
+
+       if(val.checked === true){
+         let me = document.getElementById("mcchicken").value
+         food.push(me)
+         //console.log(me);
+       }else if(val1.checked === true){
+         let me = document.getElementById("Mcveggie meal").value
+         food.unshift(me)
+       }else if(val2.checked === true){
+         let me = document.getElementById("Hotcakes").value
+         food.unshift(me)
+       }else if(val3.checked === true){
+         let me = document.getElementById("Mcwings").value
+         food.unshift(me)
+       }else if(val4.checked === true){
+         let me = document.getElementById("Chicken strips").value
+         food.unshift(me)
+       }
+        console.log(food);
+
+
+
+
+        let mypromise = new Promise(function(resolve,reject){
+          
+            setInterval(() => {
+              
+                resolve(` your order name  ${food[0]}  is ready now come and take it now!`)
+              
+            }, 5000);
+            
+        })
+        mypromise.then(function(res){
+             //alert(res)
+             if(food[0] === "Mcchicken meal"){
+                let img1 = document.createElement("img")
+                img1.src = "https://www.mcdonaldsindia.com/images/productview/McChickenMeal.jpg"
+                let hey =  document.body
+                let id = document.createElement("h1")
+                id.innerText = "ITEM ID : 001"
+                hey.append(img1,id)
+             }else if(food[0] === "Mcveggie meal"){
+                 let img1 = document.createElement("img")
+                img1.src = "https://www.mcdonaldsindia.com/images/products/HappyMeal/McVeggie.jpg"
+                let hey =  document.body
+                let id = document.createElement("h1")
+                id.innerText = "ITEM ID : 002"
+                hey.append(img1,id)
+
+             }else if(food[0] === "Hotcakes"){
+                 let img1 = document.createElement("img")
+                img1.src = "https://www.mcdonaldsindia.com/images/products/BreakfastMenu/big/hotcakes.jpg"
+                let hey =  document.body
+                let id = document.createElement("h1")
+                id.innerText = "ITEM ID : 003"
+                hey.append(img1,id)
+
+             }else if(food[0] === "Mcwings"){
+                 let img1 = document.createElement("img")
+                img1.src = "https://www.mcdonaldsindia.com/images/productview/mcwings.jpg"
+                let hey =  document.body
+                let id = document.createElement("h1")
+                id.innerText = "ITEM ID : 004"
+                hey.append(img1,id)
+
+             }
+             else if(food[0] === "Chicken strips"){
+                 let img1 = document.createElement("img")
+                img1.src = "https://www.mcdonaldsindia.com/images/productview/Website-600x600pix-ChickenStrips2pcs.png"
+                let hey =  document.body
+                let id = document.createElement("h1")
+                id.innerText = "ITEM ID : 005"
+                hey.append(img1,id)
+
+             }
+         })
+             
+          }
+
+
+          function deleteitem(){
+              food.pop()
+          }
+          let interval = setInterval(deleteitem,6000);
+</script>

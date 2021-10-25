@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <style>
+       label{
+           font-size: 30px;
+           color: red;
+           font-weight: 700;
+       }
+       form > input{
+           border: 5px solid black;
+           width: 90%;
+           height: 70px;
+       }
+       #sub{
+           border: 5px solid black;
+           width: 10%;
+           height: 50px;
+           margin-left: 35%;
+       }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">ENTER THE TASK</label><br><br>
+        <input type="text" id="inp" value=""><br><br>
+        
+    </form>
+    <button id="sub">SUBMIT</button>
+    <div id="container"></div>
+
+   
+        <label for="">  ENTER   TOGGLE TASK HERE</label><br><br>
+        <input  type="text" placeholder="enter the task"  id="t">
+         <br><br>
+        <button id="tog">INVOKE THE TOGGLE STATUS</button><br><br>
+        <label for="">STATUS</label><br>
+        <input type="text"  id="stat" >
+        
+   
+    
+</body>
+</html>
+<script>
+    let tog = document.getElementById("tog")
+    tog.addEventListener("click",toggl)
+    
+    function toggl(){
+        let ta = document.getElementById("t")
+          
+        let statu = document.getElementById("stat")
+        
+        if(ta.value === ""){
+            statu.value = "false"
+            
+        }
+        else{
+            statu.value = "true"
+            
+        }
+    }
+
+
+    let submit = document.getElementById("sub")
+    submit.addEventListener("click",show)
+    function show(){
+        let fm = document.getElementById("inp")
+        
+        let div = document.createElement("div")
+        //div.style.border = "5px solid green"
+        div.textContent = fm.value
+        //console.log(div);
+        let but1 = document.createElement("button")
+        but1.textContent = "DONE"
+        but1.addEventListener("click",colorchange)
+        function colorchange(){
+            let co = document.getElementById("inp").value
+            let cr = document.createElement("p")
+            cr.textContent = co
+            cr.style.color = "green"
+            cr.style.textDecoration = "line-through"
+            let ad = document.getElementById("container")
+            ad.append(cr)
+        }
+        let but2 = document.createElement("button")
+        but2.textContent = "REMOVE"
+        but2.addEventListener("click",remove)
+        function remove(){
+            let rem = document.getElementById("container")
+            rem.remove()
+        }
+        let add = document.getElementById("container")
+        add.append(div,but1,but2)
+
+    }
+   
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+</head>
+<body>
+    <h1>fetch</h1>
+    <input type="text" name="city" id="city" placeholder="enter city name">
+    <button onclick="getweather()">Get Weather</button>
+     <div id="data"></div>
+</body>
+<script>
+    let showdata = document.getElementById("data")
+    async function getweather(){
+        let city = document.getElementById("city").value
+        let res = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=32178209896778b0c88d9ab0732db9b3`
+        );
+        let data = await res.json();
+        //console.log(data);
+        showweather(data)
+    }
+
+    function showweather(weather){
+        showdata.inne = null
+        let name = document.createElement("p")
+        name.textContent = weather.name
+        let temp = document.createElement("p")
+        temp.textContent = Math.round(weather.main.temp - 273) + "°c"
+        showdata.append(name , temp)
+    }
+</script>
+</html>
+
+<!-- ° -->

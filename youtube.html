@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="query" placeholder="Search for a Video" />
+
+    <button onclick="searchvideo()">Search</button>
+
+    <div id="videos"></div>
+  </body>
+</html>
+
+<script>
+//   https://youtube.googleapis.com/youtube/v3/search?q=csk&type=video&key=[YOUR_API_KEY]
+
+
+//   api---AIzaSyBqsp2TaBKxncFNktx8zbP1GsWO_z8mKlw
+async function searchvideo(){
+    let res = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?q=csk&type=video&key=AIzaSyBqsp2TaBKxncFNktx8zbP1GsWO_z8mKlw`
+    )
+    let data = await res.json();
+    appendvideo(data.items)
+}
+searchvideo()
+
+function appendvideo(videodata){
+    videodata.forEach(({id:{videoId}}) => {
+        
+        let div = document.createElement("div")
+        div.innerHTML = `<iframe width="560" height="350" src="https://www.youtube.com/embed/${videoId}></iframe> title`
+        videos.append(div)
+    });
+}
+
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var arr = new myArray("vani","hari","ritika","keerthi")
+    var arr1 = new mArray("vani","hari","ritika","keerthi")
+    
+    
+    
+    //console.log(arr);
+    
+    function myArray(){
+        Object.defineProperty(this,"length",{
+            value:0,
+            writable : true,
+            Enumerable: false,
+        });
+        this.length = arguments.length
+        for(var i=0;i<this.length;i++){
+            this[i] = arguments[i]
+        }
+
+    }
+    console.log(arr);
+
+    myArray.prototype.push = function(value){
+        let index = this.length
+        this[index] = value
+        this.length++;
+    }
+    arr.push("cutiees")
+    
+   function mArray(){
+    Object.defineProperty(this,"length",{
+            value:0,
+            writable : true,
+            Enumerable: false,
+        });
+    this.length = arguments.length
+    for(var j=3;j>=0;j--){
+           this[j] = arguments[j]
+        }
+
+   }
+   var he =  Object.values(arr);
+  for(var i=he.length-1;i>=0;i--){
+      console.log(he[i]);
+  }
+
+    
+    
+  console.log(Object.values(arr))
+  console.log(Object.values(arr1))
+  console.log(arr[0]);
+  
+    
+    
+    
+
+    
+    
+    
+</script>

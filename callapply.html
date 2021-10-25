@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callapply</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // let display = {
+    //     name:"hari",
+    //     nik:"chinna",
+
+    //     Shownick(){
+    //         //console.log(this.nick);
+    //         this.nick = "chinu"
+    //     }
+    // }
+    // display.Shownick()
+
+    // let pers2 = {
+    //     name:"vani",
+    //     //nick:"chinu"
+    // }
+    // display.Shownick.call(pers2)
+    // console.log(pers2,display);
+
+
+    function Person(n,a){
+        this.name = n,
+        this.age = a;
+        this.study = "lawyer"
+        ///here u can add any number properties
+    }
+
+    function Teacher(s,n,a){
+        Person.call(this,n,a)
+        this.subject = s
+        
+    }
+
+    function Student(n,a){
+        Person.apply(this,[a,n])
+        this.class = "10th"
+
+    }
+
+    function Player(a,n){
+        let h =  Person.bind(this,a,n)
+        h()
+        //console.log(h);
+        this.sport = "Chess"
+
+    }
+    let t2 = new Teacher("Maths","Hari",25)
+    let s2  = new Student("Vani",20)
+    let p2 = new Player("chinna",34)
+    console.log(t2);
+    console.log(s2);
+    console.log(p2);
+</script>

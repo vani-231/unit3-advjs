@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>TATHKAL BOOKING SYSTEM</h1>
+    
+
+    <button onclick="check()">Check Availabity</button><br><br>
+    <label for="">P TO B PASSENGER COUNT</label>
+    <input type="text" id="ptob"><br><br>
+    <label for="">M TO B PASSENGER COUNT</label>
+    <input type="text" id="mtob"><br><br>
+    <label for="">C TO B PASSENGER COUNT</label>
+    <input type="text" id="ctob"><br><br>
+
+    <label for="">P TO booking</label>
+    <input type="text" id="pob"><br><br>
+    <label for="">M TO B booking</label>
+    <input type="text" id="mob"><br><br>
+    <label for="">C TO B booking</label>
+    <input type="text" id="cob"><br><br>
+
+    <a href="Booking.html"> <button>BOOK TICKET HERE</button></a>
+    
+</body>
+</html>
+
+<script>
+    let PtoB = ["vani","ritika","Hari","chinna","chinnu","sanju","dhruva","keerthi"]
+    let MtoB = ["vani","ritika","Hari","chinna","chinnu","sanju","dhruva","keerthi"]
+    let CtoB = ["vani","ritika","Hari","chinna","chinnu","sanju","dhruva","keerthi"]
+    
+   async function check(){
+
+       let promise =  new Promise( function(resolve,reject){
+
+        setInterval(() => {
+            if(PtoB.length === 4){
+             resolve(`PtoB is now available go and book a ticket`)
+         }else if(MtoB.length === 4){
+             resolve(`MtoB is now available go and book a ticket`)
+         }else if(CtoB.length === 4){
+             resolve(`CtoB is now available go and book a ticket`)
+         }
+        }, 1000);
+        
+
+       })
+       let res = await promise
+       alert(res)
+       
+       
+        
+    }
+
+    function cancelspeed(){
+        let cancelsp1 = Math.round(Math.random()*10)
+        //console.log( "PtOB PASSENGERS :- " + PtoB.length);
+         let p = document.getElementById("ptob")
+         p.value = PtoB.length
+        let cancelsp2 = Math.round(Math.random()*8)
+        //console.log("MtOB PASSENGERS :- "+ MtoB.length);
+        let m = document.getElementById("mtob")
+         m.value = MtoB.length
+        let cancelsp3 = Math.round(Math.random()*10)
+        //console.log( "CtOB PASSENGERS :- "+ CtoB.length);
+        let c = document.getElementById("ctob")
+         c.value = CtoB.length
+        setTimeout(() => {
+            PtoB.pop() 
+        }, cancelsp1 * 1000);
+
+        setTimeout(() => {
+            MtoB.pop() 
+        }, cancelsp2 * 1000);
+
+        setTimeout(() => {
+            CtoB.pop() 
+        }, cancelsp3 * 1000);
+        console.log(PtoB,MtoB,CtoB);
+
+        if(PtoB.length===0 || MtoB.length===0|| CtoB.length===0){
+            clearInterval(interval)
+        }
+        
+        
+    }
+    let interval = setInterval(cancelspeed,3000);
+
+    function bookticket(){
+           let  book1 = Math.round(Math.random() * 3)
+           //console.log(book1);
+           let p = document.getElementById("pob")
+           p.value = book1
+           let  book2 = Math.round(Math.random() * 3)
+           //console.log(book2);
+           let m = document.getElementById("mob")
+           m.value = book2
+           let  book3 = Math.round(Math.random() * 3)
+         //console.log(book3);
+           let c = document.getElementById("cob")
+           c.value = book3
+           setTimeout(() => {
+            PtoB.pop() 
+        }, bookticket * 1000);
+
+        setTimeout(() => {
+            MtoB.pop() 
+        }, bookticket * 1000);
+
+        setTimeout(() => {
+            CtoB.pop() 
+        }, bookticket * 1000);
+        console.log(PtoB,MtoB,CtoB);
+        if(PtoB.length===0 || MtoB.length===0|| CtoB.length===0){
+            clearInterval(inter)
+        }
+    }
+    let inter = setInterval(bookticket, 2000);
+    
+</script>

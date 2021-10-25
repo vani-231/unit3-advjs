@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>events</title>
+    <style>
+        #box{
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-gap:20px;
+        }
+        #box > div{
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="heading"></h1>
+    <button  id="but">change</button>
+    <div>
+        <label for="">Name</label>
+        <input type="text" id="name">
+    </div>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+    <script>
+
+        var boxes = document.querySelectorAll("#box > div")
+        for(var i=0;i<boxes.length;i++){
+            boxes[i].style.backgroundColor = "green"
+            boxes[i].addEventListener('click',changecolor)
+        }
+
+        function changecolor(event){
+            //event.target.style.backgroundColor = "red"
+           // document.getElementById("heading").textContent = event.target.textContent 
+           document.getElementById("heading").parentNode.style.backgroundColor = "brown"
+           var divs = document.querySelectorAll("#box > div")
+           for(var i=0;i<divs.length;i++){
+               divs[i].style.backgroundColor = "green";
+           }
+           event.target.style.backgroundColor = "blue";
+           event.target.parentNode.style.backgroundColor = "red"
+
+        }
+        let inp = document.getElementById("name")
+        inp.addEventListener("focus",Showsuggest)
+        inp.addEventListener("blur",Showvalid)
+        inp.addEventListener("keypress",Showvalid)
+
+        function Showsuggest(){
+            head.textContent = "Type your name"
+        }
+
+
+
+        function Showvalid(){
+            if(inp.value.length > 5){
+                head.textContent = "valid name"
+                head.style.backgroundColor = "yellow"
+            }
+            else{
+                head.textContent = "Invalid name"
+                head.style.backgroundColor = "pink"
+            }
+
+        }
+
+        var c=0;
+        var  btn = document.getElementById("but")
+       btn.addEventListener("dblclick",change)
+       
+       function change(){
+            document.getElementById("heading").textContent = "MASAI" + c            
+            if(c==4){
+                btn.removeEventListener("dblclick",change)
+            }
+            c++;
+
+       }
+       btn.addEventListener("dblclick",back)
+       function back(){
+           document.getElementById("heading").style.backgroundColor = "red";
+           document.getElementById("heading").textContent = "m" + c
+           if(c==4){
+                btn.removeEventListener("dblclick",back)
+            }
+            c++;
+       }
+
+       function green(){
+           document.getElementById("heading").style.backgroundColor = "green"
+       }
+
+       function orange(){
+           document.getElementById("heading").style.backgroundColor = "orange"
+       }
+
+       let head = document.getElementById("heading")
+       head.addEventListener("mouseenter",green);
+       head.addEventListener("mouseleave",orange);
+
+
+    //    var  btn = document.getElementById("but")
+    //    //btn.addEventListener("click",change)
+    //    btn.addEventListener("click",back)
+    </script>
+    
+</body>
+</html>

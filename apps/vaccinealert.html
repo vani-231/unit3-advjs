@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VACCINE ALERT SYSTEM</title>
+</head>
+<body>
+    <label for="">ENTER YOUR NAME</label><br><br>
+    <input type="text" id="name"><br><br>
+    <label for="">ENTER YOUR AGE</label><br><br>
+    <input type="number" id="age" ><br><br>
+    <button onclick="register()">REGISTER</button>
+
+
+    
+</body>
+</html>
+<script>
+
+    let queue = ["vani","hari","ritika","keerthi"]
+    function register(){
+        let name = document.getElementById("name").value
+        let age = document.getElementById("age").value
+        // if(age > 60){
+        //   queue.unshift(name)
+        // }else{
+        // queue.push(name)
+        // }
+        console.log(queue);
+        let message = `${name} Your registration is successful! now go stand`
+        alert(message)
+
+        let mypromise = new Promise(function(resolve,reject){
+         
+            setInterval(function() {
+                if(queue[0] === name){
+                resolve(`${name} its your turn now`)
+            }
+                
+            }, 1000);
+
+           
+            
+        })
+        mypromise.then(function(res){
+                alert(res)
+            })
+            
+        
+    }
+
+    function startvaccination(){
+        queue.shift()
+        if(queue.length === 0){
+            clearInterval(interval)
+        }
+        //console.log(queue);
+
+    }
+    startvaccination()
+
+    let interval = setInterval(startvaccination,3000);
+</script>

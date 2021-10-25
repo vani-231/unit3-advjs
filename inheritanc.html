@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    p and i
+</body>
+</html>
+<script>
+    // var person = {
+    //     myname : "VANI",
+    //     sister_name : "KEERTHI",
+    // }
+
+   
+     
+    //  function family(m,f){
+    //      this.mother = "MOTHER :- " +  m;
+    //      this.father = "FATHER :- " + f;
+    //  }
+     
+    //  family.prototype = person
+    
+    //  var parents = new family("SUGUNA","CHANDRA")
+    //  var grand_parents = new family("VENKATAMMA","RAMANNA");
+    //  var grand_p1 = new family("NIRMALA","REDDY")
+    //  console.log(parents);
+    //  console.log(grand_parents);
+    //  console.log(grand_p1);
+    
+    var the_child = {
+        myself : "VANI",
+        sister : "KEERTHI",
+    }
+
+    var parents = {
+        mother:"SUGUNA",
+        father:"CHANDRA",
+    }
+
+    
+
+    function family(m,f){
+          this.mother = "MOTHER :- " +  m;
+         this.father = "FATHER :- " + f;
+    }
+    
+    var fam = Object.create({parents,the_child})
+    fam.grand_mother = "VENKATAMMA";
+    fam.grand_father = "RAMANNA"
+    console.log(fam);
+
+
+    
+    
+</script>

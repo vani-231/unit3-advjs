@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .green{
+            background-color: green;
+        }
+        #red{
+            background-color: red;
+        }
+        .border{
+            border: 4px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <div>1</div>
+    <h1 id="lo">harivani</h1>
+    <button onclick="styles()">stylechange</button>
+    <button onclick="green()">click</button>
+    <button onclick="remove()">remove</button>
+    <button onclick="change()">change</button>
+    <input type="text" id="name">
+    <select name="" id="gender">
+        <option value="m">male</option>
+        <option value="f">female</option>
+    </select>
+    <button onclick="wel()">submit</button>
+</body>
+<script>
+    // id is unique so we cannot select number of ids but we can select the same type of tags or divs by using querySlectorAll()
+    let d1 = document.getElementById("part")
+    let divs = document.querySelectorAll("div")///select all divs and change properties
+    let divs1 = document.querySelectorAll(".classname")
+    let div2 = document.querySelectorAll("#idname")
+    
+    //console.log(divs);
+
+    for(var i=0;i<divs.length;i++){
+        divs[i].textContent = "div" + (i+1)
+        
+    }
+    function wel(){
+        let n = document.getElementById("name").value
+        console.log(n);
+    }
+
+    function green(){
+        let d = document.querySelectorAll("div")
+        for(var i=0;i<d.length;i+=2){
+            d[i].setAttribute("class","green")
+            // d[i].setAttribute("id","red")
+        }
+    }
+
+    function remove(){
+        let d = document.querySelectorAll("div")
+        for(var i=0;i<d.length;i++){
+            // d[i].setAttribute("class","green")
+            d[i].removeAttribute("class")
+        }
+
+    }
+
+    function change(){
+        let c = document.querySelectorAll("div")
+        
+        for(var i=0;i<c.length;i++){
+            // let prev = c[i].getAttribute("class")
+            // c[i].setAttribute("class" , prev + "border" )
+            
+            let pre = c[i].getAttribute("class")
+            c[i].setAttribute( "class", pre +  "border")
+        }
+    }
+
+    function styles(){
+        let s1 = document.querySelectorAll("div")
+       for(var i=0;i<s1.length;i++){
+           s1[i].style.textAlign = "center"
+           
+           if(i%2==0){
+            s1[i].style.color = "red"
+            s1[i].style.fontSize = "20px"
+           }
+           else{
+            s1[i].style.color = "blue"
+            s1[i].style.fontSize = "30px"
+           }
+       }
+       let d1 = document.getElementById("lo")
+       //console.log(d1.textContent);
+       d1.style.textAlign = "center"
+       d1.style.color = "blue"
+       //console.log(d1);
+       
+       
+    }
+
+
+    
+</script>
+</html>

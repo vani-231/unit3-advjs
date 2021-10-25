@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #boxes ,#box2{
+            display: grid;
+            grid-template-columns: 25% 25% 25% 25%;
+            grid-gap: 10px;
+
+        }
+        #boxes > div  {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+        }
+        #box2 > div{
+            
+            height: 200px;
+            width: 200px;
+            margin: 10px;
+            background-color: rgb(202, 39, 39);
+        }
+        #box > div {
+            height: 70px;
+            width: 70px;
+            background-color: chartreuse;
+            margin: 10px;
+            font-size: 30px;
+        }
+        
+    </style>
+</head>
+<body>
+    <button id="but">create</button>
+    <button id="rem">remove</button>
+    <button id="clicked">click</button>
+    <div id="boxes">
+        <div id="b1">1</div>
+        <div >2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    <div id="box2"></div>
+    <h1 id="head1"></h1>
+    <h1 id="head2"></h1>
+    <div id="box">
+        <div class="b1">1</div>
+        <div  class="b1">2</div>
+        <div  class="b1">3</div>
+         <div  class="b1">4</div>
+    </div>
+
+
+    <script>
+       
+       let head = document.getElementById("head1")
+       let head2 = document.getElementById("head2")
+       let divs1 = document.querySelectorAll(".b1")
+      // let divs2 = document.getElementsByClassName("b1")
+      let divs2 = document.getElementsByTagName("div")
+       
+       head.textContent = divs1.length
+       head2.textContent = divs2.length
+        let cli = document.getElementById("clicked")
+        cli.addEventListener("click",clicked)
+       function clicked(){
+           let box = document.getElementById("box")
+           let di = document.createElement("div")
+           di.textContent = "H"
+           box.appendChild(di)
+           console.log(box);
+
+       }
+
+
+
+        let divs = document.querySelectorAll("#boxes > div")
+        // for(var i=0;i<divs.length;i++){
+        //     divs[i].style.backgroundColor = "red"
+        // }
+
+        // let btn = document.getElementById("but")
+        // btn.addEventListener("click",create)
+        // function create(){
+        //     let c = 5
+        //     for(var i=0;i<=10;i++){
+        //     var ndiv = document.createElement("div")
+        //     ndiv.textContent = i + c// "HARi"
+        //     var insert = document.getElementById("boxes")
+        //     insert.appendChild(ndiv)
+        //     }
+
+        // }
+
+        let btn = document.getElementById("but")
+        btn.addEventListener("click",show)
+        var c = 6;
+        function show(){
+            let boxes = document.getElementById("boxes")
+            let boxes2 = document.getElementById("box2")
+
+            let divs = document.querySelectorAll("div")
+            // for(var i=0;i<divs.length;i++){
+            //     boxes2.appendChild(divs[i])
+                
+            // }
+            //boxes2.append("heyyy",divs[2] ,divs[3])
+            let b1 = document.getElementById("b1")
+            let ndiv = document.createElement("div")
+            ndiv.textContent = c;
+            c++
+            boxes.insertBefore(ndiv,b1)
+        }
+        let rem = document.getElementById("rem")
+        rem.addEventListener("click",remov)
+        function remov(){
+            let boxes = document.getElementById("boxes")
+            let divs = boxes.querySelectorAll("div")
+            for(var i=0;i<divs.length;i++){
+               //console.log(boxes[i]);
+               //boxes.removeChild(divs[i]) to remove
+               if(i==3){
+               var removed = boxes.removeChild(divs[i])
+               }
+            }
+            console.log(removed);
+            var boxes2 = document.getElementById("box2")
+            boxes2.appendChild(removed)
+            
+
+        }
+        
+
+
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise</title>
+</head>
+<body>
+    <input type="text" name="" id="name">
+    <button onclick="register()">Register</button>   
+</body>
+</html>
+<script>
+    let queue = ["vani","hari","ritika","heyy"]
+    function register(){
+       var name = document.getElementById("name").value
+       queue.push(name)
+       let message = `${name}  your reg successful.now go to stand!`;
+       alert(message)
+       let promise = new promise(function(resolve,reject){
+          let interval =  setInterval( function(){
+           if(queue[0]===name){
+               resolve(`${name} it's your turn now`)
+               clearInterval(interval)
+           }
+        },1000);
+       })
+    }
+</script>
