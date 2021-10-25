@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;grid-template-columns: repeat(4,25%);
+            /* justify-content: center; */
+            grid-gap: 10px;
+        }
+        img{
+            width: 98%;
+            height: 80%;
+            
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="name" placeholder="Enter movie name">
+    <button onclick="Showmovie()">GET MOVIE DATA</button>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    async function Showmovie(){
+        let name = document.getElementById("name").value
+        let res = await fetch(`http://www.omdbapi.com/?apikey=a761687d&s=${name}`)
+        let data = await res.json()
+        //console.log(data.Search);
+        Showmoviedata(data.Search)
+    }
+    
+    let parent = document.getElementById("container")
+      
+    function Showmoviedata(movies){
+        parent.innerHTML = null;
+        movies.forEach(function(movie) {
+            
+            let div = document.createElement("div")
+            let title = document.createElement("h2")
+            title.textContent = movie.Title
+            let img = document.createElement("img")
+            img.src = movie.Poster
+            let year = document.createElement("p")
+            year.textContent = "Released Year :- "+ movie.Year
+            div.append(title,year,img)
+            parent.append(div)
+
+            
+        });
+        
+
+    }
+    
+</script>
