@@ -41,7 +41,8 @@
     let container = document.getElementById("container")
     async  function Showmovie(){
         let moviename = document.getElementById("name").value
-        let res = await fetch(`http://www.omdbapi.com/?apikey=a761687d&s=${moviename}`)
+        //let res = await fetch(`http://www.omdbapi.com/?apikey=a761687d&s=${moviename}`)
+        let res = await fetch(`https://www.omdbapi.com/?i=tt0499549&apikey=a761687d&s=${moviename}`)
         let data = await res.json()
         console.log(data);
         if(data.Response==="False"){
@@ -68,9 +69,24 @@
             img.src = movie.Poster
             let year = document.createElement("p")
             year.textContent = "Released Year :- "+ movie.Year
+            let rat = document.createElement("p")
+            rat.textContent = "Ratings :- " ;
             let ratings = document.createElement("p")
-            ratings.textContent = "Ratings :- " + (Math.random()*10).toFixed(1);
-            div.append(title,year,ratings,img)
+            ratings.textContent =  (Math.random()*10).toFixed(1);
+            if(ratings.textContent > 8.5){
+                let tag = document.createElement("button")
+                tag.textContent = " Recomended "
+                tag.style.color = "blue"
+                tag.style.border = "5px solid red"
+                tag.style.width = "250px"
+                tag.style.marginBottom = "10px"
+                div.append(title,year,ratings,tag,img)
+                
+            }else{
+               
+               div.append(title,year,rat,ratings,img)
+               
+            }
             parent.append(div)
 
             
