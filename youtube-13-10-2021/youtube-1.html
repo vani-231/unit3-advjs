@@ -5,16 +5,302 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #search{
+            width: 50%;
+            height: 30px;
+            
+            
+        }
+        #nav > img{
+            width: 30px;
+            height: 30px;
+        }
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline: none;
+}
+
+body{
+
+    position: relative;
+    background: #f0f0f0;
+    font-family: 'roboto', sans-serif;
+}
+
+.navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 2.5vw;
+}
+
+.toggle-btn{
+    width: 20px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+    /* background: black; */
+}
+
+
+.toggle-btn span{
+
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #979797;
+}
+
+.toggle-btn span:nth-child(1){
+
+    top: 0;
+}
+
+.toggle-btn span:nth-child(3){
+
+    top: 100%;
+}
+
+
+.logo{
+    height: 70px;
+    margin: -10px 30px 0;
+}
+
+.search-box{
+    position: relative;
+    max-width: 500px;
+    width: 50%;
+    height: 35px;
+    display: flex;
+}
+
+.search-bar{
+    width: 85%;
+    height: 100%;
+    border: 2px solid #dbdbdb;
+    padding: 0 20px;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+.search-btn{
+
+    width: 100%;
+    height: 100%;
+    border: 0px solid #bdbdbd;
+    /* padding: 1px 0; */
+    border-left: none;
+
+
+}
+
+.search-btn img{
+    height: 100%;
+}
+
+
+.user-options{
+
+    height: 35px;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.user-options .icon{
+    height: 80%;
+    margin: 20px;
+    cursor: pointer;
+}
+
+
+.user-dp{
+
+    height: 30px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 30px;
+    overflow: hidden;
+}
+
+.user-dp img{
+    height: 100%;
+    width: 100%;
+}
+
+
+.side-bar{
+    position: fixed;
+    top: 90px;
+    left: 0;
+    min-width: 250px;
+    width: 250px;
+    height: calc(100vh - 60px);
+    background: #fff;
+    padding-right: 10px;
+}
+
+
+.links{
+
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    color: #242424;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.links img{
+    width: 20%;
+    height: 30px;
+    margin-right: 20px;
+}
+
+
+.links:hover{
+
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.filters{
+
+    position: fixed;
+    left: 250px;
+    top: 90px;
+    width: calc(100% - 250px);
+    height: 60px;
+    background: #fff;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+
+}
+
+
+.filter-options{
+
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #dbdbdb;
+    background: #f0f0f0;
+    text-transform: capitalize;
+    margin-right: 10px;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+}
+.video-container{
+
+width: calc(100% - 250px);
+margin-top: 120px;
+margin-left: 250px;
+padding: 20px;
+display: grid;
+grid-template-columns: repeat(4, 25%);
+grid-gap: 20px 5px;
+overflow-x: hidden;
+/* background: black; */
+}
+
+.video{
+
+min-height: 250px;
+height: auto;
+/* background: black; */
+}
+        
+    </style>
 </head>
 <body>
+    <nav>
+    <div class="toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+        <!-- <span></span> -->
+    </div>
+
+    <img src="https://lh3.googleusercontent.com/xvoxFfVNyHEbNUbypGrBIJydzcFQjyXQzoE8soN8SLXAxovlQdmUUbVkuQyjx8NAJIqE=s85" class="logo" alt="">
+    <input type="text" placeholder="Search" id="search">
+    <button onclick="getdata()" id="nav"><img src="https://cdn.icon-icons.com/icons2/2566/PNG/512/search_icon_153438.png" alt=""></button>
+    <div class="user-options">
+        <img src="https://cdn-icons-png.flaticon.com/128/711/711245.png" alt="" class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/2095/2095242.png" alt="" class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/128/1827/1827347.png" alt="" class="icon">
+        <div class="user-dp">
+            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="">
+
+        </div>
+    </div>
+</nav>
+    <div class="side-bar">
+        <a href="#" class="links"><img src="https://t4.ftcdn.net/jpg/00/97/00/07/240_F_97000769_R4zepLTgmf8G22W7G2o8JA1HeiVK2CkK.jpg" alt="">Home</a>
+        <a href="#" class="links"><img src="https://t3.ftcdn.net/jpg/01/65/68/44/240_F_165684454_FGvUJmFlcAAf0JuMe08RqsbUEXTIpu3u.jpg" alt="">Explore</a>
+        <a href="#" class="links"><img src="data:image/png;base64,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" alt="">Subscription</a>   
+    </div>
+
+    <div class="filters">
+        <button class="filter-options">All</button>
+        <button class="filter-options">Conversation</button>
+        <button class="filter-options">Mysteries</button>
+        <button class="filter-options">Comedy</button>
+        <button class="filter-options">Numbers</button>
+        <button class="filter-options">Entertainment</button>
+        <button class="filter-options">Trending</button>
+        <button class="filter-options">Popular</button>
+        <button class="filter-options">Top</button>
+    </div>
+     <div class="video-container">
+        <div id="container"></div>
+     </div>
+   
     
 </body>
 </html>
 <script>
+    let  parent = document.getElementById("container")
     async function getdata(){
-        let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=20&q=csk&type=video&key=AIzaSyD5ZmU4D9H9EjxT6hyON3UrRrPQ8vW7Plk`)
+        let videoname = document.getElementById("search").value
+        let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=20&q=${videoname}&type=video&key=AIzaSyD5ZmU4D9H9EjxT6hyON3UrRrPQ8vW7Plk`)
         let data = await res.json()
-        console.log(data);
+        //console.log(data);
+        appendvideo(data.items)
     }
-    getdata()
+    //getdata()
+    
+    
+    function appendvideo(video){
+        parent.innerHTML = null
+            video.forEach(({id:{videoId}}) => {
+                     //console.log(videoId);
+                     let div = document.createElement("div")
+                     div.innerHTML = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+                     parent.append(div)
+            });
+
+    }
 </script>
