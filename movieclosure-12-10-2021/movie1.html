@@ -9,18 +9,34 @@
         #container{
             display: grid;grid-template-columns: repeat(4,25%);
             /* justify-content: center; */
-            grid-gap: 10px;
+            grid-gap: 20px;
         }
         img{
             width: 98%;
             height: 80%;
             
         }
+        input{
+            border: 5px solid greenyellow;
+            width: 60%;
+            height: 50px;
+            font-size: 25px;
+        }
+        #but{
+            border: 5px solid rgb(212, 54, 33);
+            width: 30%;
+            height: 60px;
+            font-size: 25px;
+        }
+        #container{
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
+    <h1>HOTSTAR MINI  APP</h1>
     <input type="text" id="name" placeholder="Enter movie name">
-    <button onclick="Showmovie()">GET MOVIE DATA</button>
+    <button onclick="Showmovie()" id="but">GET MOVIE DATA</button>
     <div id="container"></div>
 </body>
 </html>
@@ -29,17 +45,31 @@
         let name = document.getElementById("name").value
         let res = await fetch(`http://www.omdbapi.com/?apikey=a761687d&s=${name}`)
         let data = await res.json()
-        //console.log(data.Search);
+        console.log(data.Search);
         Showmoviedata(data.Search)
     }
     
     let parent = document.getElementById("container")
+    let parent1 = document.getElementById("container")
       
     function Showmoviedata(movies){
         parent.innerHTML = null;
         movies.forEach((movie) => {
             
-            let div = document.createElement("div")
+            let div = document.createElement("button")
+            div.addEventListener("click",show)
+            function show(){
+                parent1.innerHTML=null
+                let title = document.createElement("h2")
+                title.textContent = movie.Title
+                let img = document.createElement("img")
+                 img.src = movie.Poster
+                 let year = document.createElement("p")
+                 year.textContent = "Released Year :- "+ movie.Year
+                 div.append()
+                parent1.append(div)
+
+            }
             let title = document.createElement("h2")
             title.textContent = movie.Title
             let img = document.createElement("img")
