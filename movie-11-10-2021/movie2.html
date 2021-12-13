@@ -17,7 +17,7 @@
         }
         input{
             border: 5px solid greenyellow;
-            width: 60%;
+            width: 50%;
             height: 50px;
             font-size: 25px;
         }
@@ -27,12 +27,19 @@
             height: 60px;
             font-size: 25px;
         }
+        #login{
+            float: right;
+            margin-top:0;
+            font-size:30px;
+        }
     </style>
 </head>
 <body>
     <h1>HOTSTAR MINI  APP</h1>
+    <h3 id="login" ><a href="helo.html" > Signup login </a> </h3>
     <input type="text" placeholder="Enter movie name" id="name">
     <button onclick="Showmovie()" >Search Here</button>
+    
     <div id="container"></div>
     
 </body>
@@ -41,7 +48,6 @@
     let container = document.getElementById("container")
     async  function Showmovie(){
         let moviename = document.getElementById("name").value
-        //let res = await fetch(`http://www.omdbapi.com/?apikey=a761687d&s=${moviename}`)
         let res = await fetch(`https://www.omdbapi.com/?i=tt0499549&apikey=a761687d&s=${moviename}`)
         let data = await res.json()
         console.log(data);

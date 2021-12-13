@@ -115,12 +115,17 @@
     let  parent = document.getElementById("container")
     async function getdata(){
         let videoname = document.getElementById("search").value
-        let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=20&q=${videoname}&type=video&key=AIzaSyD5ZmU4D9H9EjxT6hyON3UrRrPQ8vW7Plk`)
-        let data = await res.json()
+        
+            let res = await fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=20&q=${videoname}&type=video&key=AIzaSyD5ZmU4D9H9EjxT6hyON3UrRrPQ8vW7Plk`)
+            let data = await res.json()
         //console.log(data);
         appendvideo(data.items)
+            
     }
+    
     //getdata()
+
+    
     
     
     function appendvideo(video){
